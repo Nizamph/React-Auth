@@ -4,7 +4,7 @@ import classes from './MainNavigation.module.css';
 import AuthContext from '../../Store/auth-context';
 
 const MainNavigation = () => {
-      const authCtx =  useContext(AuthContext)
+      const authCtx =  useContext(AuthContext) 
 
       const isLoggedIn = authCtx.isLoggedIn
   return (

@@ -1,4 +1,5 @@
 import { useState,useRef,useContext } from 'react';
+import { useHistory } from 'react-router-dom'
 import AuthContext from '../../Store/auth-context';
 import classes from './AuthForm.module.css';
 
@@ -7,6 +8,7 @@ const AuthForm = () => {
   const [isLoading,setLoading] = useState(false)
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
+  const history = useHistory()
  
   const authCtx = useContext(AuthContext);
 
@@ -59,11 +61,12 @@ const AuthForm = () => {
       .catch(err => {
         alert(err.message)
       })
-
+      if (authCtx.isLoggedIn || !isLogin) {
+        history.push('/Profile');
+      }
     }
    
   
-
   
   return (
     <section className={classes.auth}>
@@ -78,7 +81,7 @@ const AuthForm = () => {
           <input type='password' id='password' required ref={passwordInputRef}/>
         </div>
         <div className={classes.actions}>
-          {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button> }
+          {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button>}
           {isLoading && <p>Loading....</p>}
          <button
             type='button'

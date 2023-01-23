@@ -10,7 +10,7 @@ function App() {
     <Layout>
       <Switch>
         <Route path='/' exact>
-          <HomePage />
+          <HomePage />   
         </Route>
         <Route path='/auth'>
           <AuthPage />
@@ -18,8 +18,9 @@ function App() {
         <Route path='/profile'>
           <UserProfile />
         </Route>
+        
       </Switch>
-    </Layout>
+    </Layout>        
   );
 }
 
