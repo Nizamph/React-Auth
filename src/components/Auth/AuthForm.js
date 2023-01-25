@@ -57,13 +57,11 @@ const AuthForm = () => {
         }
       }).then(data =>{
         authCtx.login(data.idToken);
+        history.replace('/');
       })
       .catch(err => {
         alert(err.message)
       })
-      if (authCtx.isLoggedIn || !isLogin) {
-        history.push('/Profile');
-      }
     }
    
   

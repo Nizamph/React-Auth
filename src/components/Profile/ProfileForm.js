@@ -1,7 +1,9 @@
 import classes from './ProfileForm.module.css';
 import {useRef, useContext} from 'react'
 import AuthContext from '../../Store/auth-context';
+import { useHistory } from 'react-router-dom'
 const ProfileForm = () => {
+  const history = useHistory()
   const changePasswordInputRef = useRef()
      const authCtx = useContext(AuthContext)
   const changePasswordHandler = (event) => {
@@ -18,7 +20,7 @@ const ProfileForm = () => {
         'Content-Type':'application/json'
       }
     }).then((res) => {
-       
+       history.replace('/')
     })
   }
   return (
